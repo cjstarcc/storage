@@ -1,0 +1,4 @@
+env:
+  port: 6001
+  dir: /data
+  rabbitmq: amqp://root:123123@39.108.69.186:5682
