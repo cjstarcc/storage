@@ -21,4 +21,18 @@
 由于传统的存储是存储在单机上的，会造成数据越多开销会呈指数级的上升。而对象存储的会只需要增加节点就行。
 
 
-
+## 安装
+### 1.创建存储目录
+```shell script
+mkdir /data
+```
+### 2.安装rabbitmq
+```shell script
+sudo apt-get install rabbitmq-server # 安装rabbitmq服务器
+sudo rabbitmq-plugins enable rabbitmq_management # 安装rabbitmq客户端管理工具
+wget 127.0.0.1:15672/cli/rabbitmqadmin # 下载管理工具
+python3 rabbitmqadmin declare exchange name=apiServers type=fanout # 创建apiServer exchange
+python3 rabbitmqadmin declare exchange name=dataServer type=fanout # 创建dataServer exchange
+sudo rabbitmqctl add_user test test # 添加test用户
+sudo rabbitmqctl set_permissions -p / test ".*" ".*" ".*" #为test用户增加所有权限
+```
