@@ -36,3 +36,13 @@ python3 rabbitmqadmin declare exchange name=dataServer type=fanout # 创建dataS
 sudo rabbitmqctl add_user test test # 添加test用户
 sudo rabbitmqctl set_permissions -p / test ".*" ".*" ".*" #为test用户增加所有权限
 ```
+
+### 3. 安装elasticsearch 7.11
+```shell script
+wget https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.11.2-linux-x86_64.tar.gz
+tar -xzvf elasticsearch-7.11.2-linux-x86_64.tar.gz
+adduser es #添加es用户
+chown -R es:es elasticsearch-7.11.2
+su es
+/elasticsearch-7.11.2/bin/elasticsearch -d
+```
